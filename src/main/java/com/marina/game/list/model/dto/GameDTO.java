@@ -1,12 +1,13 @@
 package com.marina.game.list.model.dto;
 
 import com.marina.game.list.model.Game;
+import com.marina.game.list.projection.GameMinProjection;
 
 public class GameDTO {
 
     private Long id;
     private String title;
-    private String year;
+    private Integer year;
     private String imgUrl;
     private String shortDescription;
 
@@ -21,6 +22,14 @@ public class GameDTO {
         shortDescription = game.getShortDescription();
     }
 
+    public GameDTO(GameMinProjection projection) {
+        id = projection.getId();
+        title = projection.getTitle();
+        year = projection.getYear();
+        imgUrl = projection.getImgUrl();
+        shortDescription = projection.getShortDescripton();
+    }
+
     public Long getId() {
         return id;
     }
@@ -29,7 +38,7 @@ public class GameDTO {
         return title;
     }
 
-    public String getYear() {
+    public Integer getYear() {
         return year;
     }
 
